@@ -1,0 +1,65 @@
+.antigravity/
+node_modules/
+.next/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Secret Keys (NEVER UPLOAD THESE)
+.env
+.env.local
+
+# Junk / Build Files
+node_modules/
+.next/
+dist/
+build/
+
+# Local Data (Keep these in Sirohi only!)
+posted_exams.json
+auth_info_baileys/
+*.db
+*.sqlite
+qr.png
+*.zip
+npm_error.txt
+*.log
+
