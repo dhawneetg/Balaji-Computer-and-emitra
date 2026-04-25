@@ -463,8 +463,8 @@ export async function GET() {
 
       // New exam - set as pending
       const newEntry: ExamData = {
-        id: generateId(`${exam.name}-${exam.post}`),
         ...exam,
+        id: generateId(`${exam.name}-${exam.post}`),
         status: 'pending',
         verificationScore,
         missingFields,
