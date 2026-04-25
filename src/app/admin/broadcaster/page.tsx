@@ -16,7 +16,7 @@ export default function BroadcasterInbox() {
 
   const botUrl = process.env.NEXT_PUBLIC_BOT_URL || 'http://localhost:3001';
 
-  const fetchQueue = async (key?: string) => {
+  const fetchQueueNow = async (key?: string) => {
     const currentKey = key || adminKey;
     if (!currentKey) return;
 
@@ -46,7 +46,7 @@ export default function BroadcasterInbox() {
     const savedKey = localStorage.getItem('balaji_admin_key');
     if (savedKey) {
       setAdminKey(savedKey);
-      fetchQueue(savedKey);
+      fetchQueueNow(savedKey);
     } else {
       setIsLoading(false);
     }
@@ -54,7 +54,7 @@ export default function BroadcasterInbox() {
 
   useEffect(() => {
     if (adminKey) {
-      const interval = setInterval(() => fetchQueue(adminKey), 30000);
+      const interval = setInterval(() => fetchQueueNow(adminKey), 30000);
       return () => clearInterval(interval);
     }
   }, [adminKey]);
@@ -63,7 +63,7 @@ export default function BroadcasterInbox() {
     e.preventDefault();
     localStorage.setItem('balaji_admin_key', passInput);
     setAdminKey(passInput);
-    fetchQueue(passInput);
+    fetchQueueNow(passInput);
   };
 
   const handleAction = async (examId: string, action: string, updatedData?: any) => {
@@ -82,7 +82,7 @@ export default function BroadcasterInbox() {
         if (action === 'discard' || action === 'approve') {
            setQueue(prev => prev.filter(e => e.id !== examId));
         } else {
-           fetchQueue();
+           fetchQueueNow();
         }
         setEditingExam(null);
       }
@@ -187,7 +187,7 @@ export default function BroadcasterInbox() {
                className={`w-5 h-5 text-gray-500 cursor-pointer hover:text-blue-400 transition-colors ${isLoading ? 'animate-spin' : ''}`} 
                onClick={(e) => {
                  e.preventDefault();
-                 fetchQueue();
+                 fetchQueueNow();
                }}
              />
           </div>
